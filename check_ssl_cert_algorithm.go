@@ -33,7 +33,7 @@ func main() {
 	for i := 0; i < len(certs); i++ {
 		if certs[i].SignatureAlgorithm == x509.SHA1WithRSA {
 			fmt.Println("WARNING: SHA-1 found for " + domain + "; " + strconv.Itoa(len(certs)) + " certificates total")
-			os.Exit(2)
+			os.Exit(1)
 		}
 	}
 
