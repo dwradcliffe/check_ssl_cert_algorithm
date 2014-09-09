@@ -14,11 +14,17 @@ import (
 
 func main() {
 
+	if len(os.Args) != 2 {
+		fmt.Println("UNKNOWN: Must specify domain!")
+		os.Exit(3)
+	}
+
 	domain := os.Args[1]
 
 	conn, err := tls.Dial("tcp", domain+":443", &tls.Config{})
 	if err != nil {
-		panic("failed to connect: " + err.Error())
+		fmt.Println("UNKNOWN: Failed to connect: " + err.Error())
+		os.Exit(3)
 	}
 	defer conn.Close()
 
