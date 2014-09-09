@@ -21,7 +21,7 @@ func main() {
 
 	domain := os.Args[1]
 
-	conn, err := tls.Dial("tcp", domain+":443", &tls.Config{})
+	conn, err := tls.Dial("tcp", domain+":443", &tls.Config{InsecureSkipVerify: true})
 	if err != nil {
 		fmt.Println("UNKNOWN: Failed to connect: " + err.Error())
 		os.Exit(3)
